@@ -2,7 +2,7 @@ import ItemRow from "../ItemRow.jsx";
 import SubHeader from "../SubHeader.jsx";
 
 function Content() {
-    const number = 15;
+    const number = 20;
 
     return (
         <div className="w-screen overflow-x-scroll">

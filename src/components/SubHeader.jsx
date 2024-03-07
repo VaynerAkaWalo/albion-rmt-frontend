@@ -4,10 +4,10 @@ function SubHeader(prop) {
     let tier = 4;
     for (let i = 0; i < prop.num; i++) {
         let mod = i % 4;
-        if (mod + 1 === 0) {
+        items.push(<div>{tier + "." + mod}</div>)
+        if (mod === 3) {
             tier++;
         }
-        items.push(<div>{tier + "." + mod}</div>)
     }
 
     return (

@@ -17,7 +17,7 @@ function ItemRow(props) {
 
     function itemPrice(num) {
         return (
-            <div className={`flex justify-center items-center border-2 rounded-2xl ${roll() ? "bg-red-900" : "bg-green-800"}`}>{price(num)}</div>
+            <div className={`flex justify-center items-center rounded-2xl ${roll() ? "bg-red-900" : "bg-green-800"}`}>{price(num)}</div>
         )
     }
 
