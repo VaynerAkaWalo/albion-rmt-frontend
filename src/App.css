@@ -1,4 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .itemRow > * {
+        @apply ml-8 min-h-32 min-w-32;
+    }
+}
 
 .Content {
-    height: 150vh;
+    height: 75vh;
 }
