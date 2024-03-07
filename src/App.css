@@ -1,4 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .itemRow > * {
+        @apply ml-8 min-h-32 min-w-32;
+    }
+
+    .subHeader > * {
+        @apply ml-8 min-h-16 min-w-32 flex justify-center items-center;
+    }
+}
 
 .Content {
-    height: 150vh;
+    height: 83vh;
 }
