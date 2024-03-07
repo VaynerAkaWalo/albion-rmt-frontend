@@ -1,14 +1,16 @@
-import ItemRow from "../content/ItemRow.jsx";
+import ItemRow from "../ItemRow.jsx";
 import SubHeader from "../SubHeader.jsx";
 
 function Content() {
+    const number = 15;
+
     return (
         <div className="w-screen overflow-x-scroll">
-            <SubHeader></SubHeader>
+            <SubHeader num={number}></SubHeader>
             <div className="Content flex-grow w-fit">
                 <ul>
                     {data.map(x =>
-                        <ItemRow key={x.name} name={x.name}></ItemRow>)}
+                        <ItemRow key={x.name} name={x.name} num={number}></ItemRow>)}
                 </ul>
             </div>
         </div>
