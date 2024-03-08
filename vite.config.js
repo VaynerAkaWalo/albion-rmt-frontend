@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
 
-  base: "/albion-rmt-frontend"
+  base: "/albion-rmt-frontend/"
 })
