@@ -1,3 +1,4 @@
+import trash from "/T1_TRASH.png"
 
 function ItemRow(props) {
     const prices = [];
@@ -8,7 +9,7 @@ function ItemRow(props) {
 
     return (
         <div className="itemRow border-b-2 flex flex-row [&>*]:my-3">
-            <img src="/T1_TRASH.png" alt="itemIcon"/>
+            <img src={trash} alt="itemIcon"/>
             {prices}
         </div>
     )
