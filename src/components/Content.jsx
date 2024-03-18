@@ -1,5 +1,5 @@
-import ItemRow from "../ItemRow.jsx";
-import SubHeader from "../SubHeader.jsx";
+import ItemRow from "./ItemRow.jsx";
+import SubHeader from "./SubHeader.jsx";
 
 function Content() {
     const number = 20;
