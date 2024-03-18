@@ -1,4 +1,4 @@
-export function SelectWithLabel({name, items}) {
+export function SelectComponent({name, items}) {
     const options = [];
 
    items.map(item => {
@@ -6,10 +6,9 @@ export function SelectWithLabel({name, items}) {
     })
 
     return (
-        <div className="flex flex-col w-max [&>*]:my-1">
-            <label htmlFor={name}>{name}</label>
-            <select name={name} id={name}>
-                <option value="all">all</option>
+        <div className="w-24">
+            <select name={name} id={name} className="w-full">
+                <option value="all">{name}</option>
                 {options}
             </select>
         </div>

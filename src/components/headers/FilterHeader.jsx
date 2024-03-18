@@ -1,11 +1,13 @@
-import {SelectWithLabel} from "../basic/SelectWithLabel.jsx";
+import {SelectComponent} from "../filteringComponents/SelectComponent.jsx";
+import {SearchBar} from "../filteringComponents/SearchBar.jsx";
 
 export function FilterHeader() {
     return (
-        <div className="flex flex-row min-h-24 border-b-2 text-center items-center justify-center [&>*]:ml-6 [&>*]:min-w-48">
-            <SelectWithLabel {...categories}></SelectWithLabel>
-            <SelectWithLabel {...subCategories}></SelectWithLabel>
-            <SelectWithLabel {...items}></SelectWithLabel>
+        <div className="flex flex-row min-h-12 border-b-2 text-center items-center justify-center [&>*]:ml-6 [&>*]:min-w-48">
+            <SearchBar/>
+            <SelectComponent {...categories}></SelectComponent>
+            <SelectComponent {...subCategories}></SelectComponent>
+            <SelectComponent {...items}></SelectComponent>
         </div>
     )
 }
