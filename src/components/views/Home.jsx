@@ -4,7 +4,7 @@ import Content from "../Content.jsx";
 export function Home() {
     return (
         <>
-            <FilterHeader/>
+            <FilterHeader searchBarActive={true}/>
             <Content/>
         </>
     )

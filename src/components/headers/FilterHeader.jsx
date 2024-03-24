@@ -1,10 +1,10 @@
-import {SelectComponent} from "../filteringComponents/SelectComponent.jsx";
-import {SearchBar} from "../filteringComponents/SearchBar.jsx";
+import {SelectComponent} from "../utils/SelectComponent.jsx";
+import {SearchBar} from "../utils/SearchBar.jsx";
 
-export function FilterHeader() {
+export function FilterHeader({searchBarActive = false}) {
     return (
-        <div className="flex flex-row min-h-12 border-b-2 text-center items-center justify-center [&>*]:ml-6 [&>*]:min-w-48">
-            <SearchBar/>
+        <div className="flex flex-row columns-4 min-h-12 border-b-2 text-center items-center justify-center [&>*]:mx-20">
+            {searchBarActive && <SearchBar/>}
             <SelectComponent {...categories}></SelectComponent>
             <SelectComponent {...subCategories}></SelectComponent>
             <SelectComponent {...items}></SelectComponent>

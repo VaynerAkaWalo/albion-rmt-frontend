@@ -10,8 +10,17 @@
     .subHeader > * {
         @apply ml-8 min-h-10 min-w-32 flex justify-center items-center;
     }
+
+    .tierSelection > * {
+        @apply mx-2
+    }
+
+    input {
+        @apply border border-gray-600;
+    }
 }
 
 .Content {
     height: 83vh;
 }
+

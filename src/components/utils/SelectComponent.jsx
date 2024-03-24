@@ -1,4 +1,4 @@
-export function SelectComponent({name, items}) {
+export function SelectComponent({name, items, label = false}) {
     const options = [];
 
    items.map(item => {
@@ -6,9 +6,9 @@ export function SelectComponent({name, items}) {
     })
 
     return (
-        <div className="w-24">
+        <div className="w-full flex flex-col">
+            {label && <label className="text-center" htmlFor={name}>{name}</label>}
             <select name={name} id={name} className="w-full">
-                <option value="all">{name}</option>
                 {options}
             </select>
         </div>
