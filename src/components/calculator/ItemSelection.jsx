@@ -1,77 +1,24 @@
 import {SelectComponent} from "../utils/SelectComponent.jsx";
+import {categories, subcategories, items} from "../repository/items.js";
+import React from "react";
+import {ItemContext, SetItemContext} from "./scripts/ItemProvider.jsx";
 
 export function ItemSelection() {
+    const item = React.useContext(ItemContext)
+    const {setCategory, setSubcategory, setItem, setTier, setEnchant} = React.useContext(SetItemContext)
+
     return (
         <div className="w-full h-full grid grid-cols-2 grid-rows-2 border-2 [&>*]:p-4 [&>*]:items-center [&>*]:justify-center">
-            <SelectComponent {...categories}></SelectComponent>
-            <SelectComponent {...subCategories}></SelectComponent>
-            <SelectComponent {...items}></SelectComponent>
+            <SelectComponent name="category" label="true" items={categories} current={item['category']} changeCurrent={setCategory}></SelectComponent>
+            <SelectComponent name="sub category" label="true" items={subcategories[item['category']]} current={item['subcategory']} changeCurrent={setSubcategory}></SelectComponent>
+            <SelectComponent name="item" label="true" items={items[item['subcategory']]} current={item['item']} changeCurrent={setItem}></SelectComponent>
             <div className="tierSelection columns-2 flex justify-between">
-                <SelectComponent {...tier}/>
-                <SelectComponent {...enchantment}/>
+                <SelectComponent name="Tier" label="true" items={tiers} current={item['tier']} changeCurrent={setTier}/>
+                <SelectComponent name="Tier" label="true" items={enchantments} current={item['enchant']} changeCurrent={setEnchant}/>
             </div>
         </div>
     )
 }
 
-const categories = {
-    name: "Category",
-    label: true,
-    items: [
-        "weapons",
-        "helmets",
-        "armours",
-        "boots",
-        "mounts"
-    ]
-}
-
-const subCategories = {
-    name: "Sub category",
-    label: true,
-    items: [
-        "nature staff",
-        "bow",
-        "sword",
-        "hammer",
-        "claws"
-    ]
-}
-
-const items = {
-    name: "Item",
-    label: true,
-    items: [
-        "Nature staff",
-        "Druidic staff",
-        "Great Nature Staff",
-        "Rampart Staff",
-    ]
-}
-
-const tier = {
-    name: "Tier",
-    label: true,
-    items: [
-        "T1",
-        "T2",
-        "T3",
-        "T4",
-        "T5",
-        "T6",
-        "T7",
-        "T8",
-    ]
-}
-
-const enchantment = {
-    name: "Enchant",
-    label: true,
-    items: [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-    ]
-}
+const tiers = Array.from({length: 8}, (v, i) => "T"+ (i + 1))
+const enchantments = Array.from({length: 5}, (v, i) => i)
