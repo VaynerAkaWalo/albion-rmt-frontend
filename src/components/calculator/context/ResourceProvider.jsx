@@ -6,10 +6,17 @@ export const SetResourceContext = React.createContext({})
 export function ResourceProvider({child}) {
     const [resourceInfo, setResourceInfo] = useState(initialData)
 
+    function changeRes1Price(value) {
+        setResourceInfo(prevState => ({...prevState, resource1Price: value}))
+    }
+
+    function changeRes2Price(value) {
+        setResourceInfo(prevState => ({...prevState, resource2Price: value}))
+    }
 
     return (
         <ResourceContext.Provider value={resourceInfo}>
-            <SetResourceContext.Provider value={setResourceInfo}>
+            <SetResourceContext.Provider value={{changeRes1Price, changeRes2Price}}>
                 {child}
             </SetResourceContext.Provider>
         </ResourceContext.Provider>
