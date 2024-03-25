@@ -1,10 +1,12 @@
-import {ResourceContext} from "./scripts/ResourceProvider.jsx";
+import {ResourceContext} from "./context/ResourceProvider.jsx";
 import React from "react";
-import {ItemContext} from "./scripts/ItemProvider.jsx";
+import {ItemContext} from "./context/ItemProvider.jsx";
+import {SettingsContext} from "./context/SettingsContext.jsx";
 
 export function ResourcesPanel() {
     const {resource1, resource2, resource1Ratio, resource2Ratio, resource1Price, resource2Price} = React.useContext(ResourceContext)
     const {tier, enchant} = React.useContext(ItemContext)
+    const {amount} = React.useContext(SettingsContext)
 
     function image(item) {
         return `https://render.albiononline.com/v1/item/${tier}_${item.toUpperCase()}${enchantPostfix()}.png`
@@ -28,14 +30,10 @@ export function ResourcesPanel() {
                     <img className="w-4/5" src={image(resource2)} alt={resource2}/>
                 </div>
             </>
-            {/*<>*/}
-            {/*    <div className="col-span-2 text-center my-auto">name1</div>*/}
-            {/*    <div className="col-span-2 col-start-4 text-center my-auto">name1</div>*/}
-            {/*</>*/}
             <>
-                <div className="col-span-2 text-center my-auto">16</div>
+                <div className="col-span-2 text-center my-auto">{resource1Ratio * amount}</div>
                 <div className="text-center my-auto">Quantity</div>
-                <div className="col-span-2 text-center my-auto">8</div>
+                <div className="col-span-2 text-center my-auto">{resource2Ratio * amount}</div>
             </>
             <>
                 <input className="col-span-2 my-2 mx-5 text-right" type="text" value={resource1Price}/>

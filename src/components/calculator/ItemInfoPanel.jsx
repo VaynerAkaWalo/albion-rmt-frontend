@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {ItemContext} from "./scripts/ItemProvider.jsx";
+import {ItemContext} from "./context/ItemProvider.jsx";
 import trash from "/T1_TRASH.png";
 
 export function ItemInfoPanel() {

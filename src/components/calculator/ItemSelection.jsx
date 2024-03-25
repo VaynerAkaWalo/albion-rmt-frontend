@@ -1,7 +1,7 @@
 import {SelectComponent} from "../utils/SelectComponent.jsx";
 import {categories, subcategories, items} from "../repository/items.js";
 import React from "react";
-import {ItemContext, SetItemContext} from "./scripts/ItemProvider.jsx";
+import {ItemContext, SetItemContext} from "./context/ItemProvider.jsx";
 
 export function ItemSelection() {
     const item = React.useContext(ItemContext)
