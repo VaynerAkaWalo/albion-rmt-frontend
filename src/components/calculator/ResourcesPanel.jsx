@@ -1,10 +1,11 @@
-import {ResourceContext} from "./context/ResourceProvider.jsx";
-import React from "react";
+import {ResourceContext, SetResourceContext} from "./context/ResourceProvider.jsx";
+import React, {useContext} from "react";
 import {ItemContext} from "./context/ItemProvider.jsx";
 import {SettingsContext} from "./context/SettingsContext.jsx";
 
 export function ResourcesPanel() {
     const {resource1, resource2, resource1Ratio, resource2Ratio, resource1Price, resource2Price} = React.useContext(ResourceContext)
+    const {changeRes1Price, changeRes2Price} = useContext(SetResourceContext)
     const {tier, enchant} = React.useContext(ItemContext)
     const {amount} = React.useContext(SettingsContext)
 
@@ -36,9 +37,9 @@ export function ResourcesPanel() {
                 <div className="col-span-2 text-center my-auto">{resource2Ratio * amount}</div>
             </>
             <>
-                <input className="col-span-2 my-2 mx-5 text-right" type="text" value={resource1Price}/>
+                <input className="col-span-2 my-2 mx-5 text-right" type="text" value={resource1Price} onChange={e => changeRes1Price(e.target.value)}/>
                 <span className="text-center my-auto">Price</span>
-                <input className="col-span-2 col-start-4 my-2 mx-5 text-right" type="text" value={resource2Price}/>
+                <input className="col-span-2 col-start-4 my-2 mx-5 text-right" type="text" value={resource2Price} onChange={e => changeRes2Price(e.target.value)}/>
             </>
 
 
