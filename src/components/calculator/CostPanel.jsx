@@ -1,6 +1,6 @@
 import {TextBoxWithLabelH} from "../utils/textbox/TextBoxWithLabelH.jsx";
 import {TextBoxDualWithLabelH} from "../utils/textbox/TextBoxDualWithLabelH.jsx";
-import {getItemValue} from "./scripts/utils.jsx";
+import {getItemValue, getResourceReturn} from "./scripts/utils.jsx";
 import {useContext} from "react";
 import {SettingsContext} from "./context/SettingsContext.jsx";
 import {ResourceContext} from "./context/ResourceProvider.jsx";
@@ -8,7 +8,9 @@ import {ResourceContext} from "./context/ResourceProvider.jsx";
 export function CostPanel() {
     const {amount, fee} = useContext(SettingsContext)
     const {resource1Ratio, resource2Ratio, resource1Price, resource2Price} = useContext(ResourceContext)
+
     const itemValue = getItemValue()
+    const rRate = getResourceReturn()
 
     function resourcePrice() {
         return (resource1Price * resource1Ratio + resource2Price * resource2Ratio) * amount
@@ -19,11 +21,11 @@ export function CostPanel() {
     }
 
     function returnFromRrWoF() {
-        return 0;
+        return rRate['resource1'][0] * resource1Price + rRate['resource2'][0] * resource2Price;
     }
 
     function returnFromRrWF() {
-        return 0;
+        return rRate['resource1'][1] * resource1Price + rRate['resource2'][1] * resource2Price;
     }
 
     function returnFromJournals() {
