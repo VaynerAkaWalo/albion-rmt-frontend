@@ -1,18 +1,31 @@
-import trash from "/T1_TRASH.png";
+import {ResourceContext} from "./scripts/ResourceProvider.jsx";
+import React from "react";
+import {ItemContext} from "./scripts/ItemProvider.jsx";
 
 export function ResourcesPanel() {
+    const {resource1, resource2, resource1Ratio, resource2Ratio, resource1Price, resource2Price} = React.useContext(ResourceContext)
+    const {tier, enchant} = React.useContext(ItemContext)
+
+    function image(item) {
+        return `https://render.albiononline.com/v1/item/${tier}_${item.toUpperCase()}${enchantPostfix()}.png`
+    }
+
+    function enchantPostfix() {
+        return enchant === '0' ? '' : `_LEVEL${enchant}`
+    }
+
     return (
         <div className="w-full h-full border-2 grid grid-cols-5 grid-rows-5">
             <>
                 <div className="col-span-2 row-span-3 flex justify-center items-center">
-                    <img className="w-4/5" src={trash} alt="item"/>
+                    <img className="w-4/5" src={image(resource1)} alt={resource1}/>
                 </div>
                 <div className="row-span-3 flex flex-col justify-center items-center">
                     <span>Ratio</span>
-                    <span>16:8</span>
+                    <span>{`${resource1Ratio}:${resource2Ratio}`}</span>
                 </div>
                 <div className="col-span-2 row-span-3 flex justify-center items-center">
-                    <img className="w-4/5" src={trash} alt="item"/>
+                    <img className="w-4/5" src={image(resource2)} alt={resource2}/>
                 </div>
             </>
             {/*<>*/}
@@ -25,9 +38,9 @@ export function ResourcesPanel() {
                 <div className="col-span-2 text-center my-auto">8</div>
             </>
             <>
-                <input className="col-span-2 my-2 mx-5" type="text"/>
+                <input className="col-span-2 my-2 mx-5 text-right" type="text" value={resource1Price}/>
                 <span className="text-center my-auto">Price</span>
-                <input className="col-span-2 col-start-4 my-2 mx-5" type="text"/>
+                <input className="col-span-2 col-start-4 my-2 mx-5 text-right" type="text" value={resource2Price}/>
             </>
 
 

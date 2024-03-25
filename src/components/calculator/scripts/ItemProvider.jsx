@@ -35,8 +35,10 @@ export function ItemProvider({child}) {
     return (
         <ItemContext.Provider value={itemInfo}>
             <SetItemContext.Provider value={{
-                setCategory: changeCategory, setSubcategory: changeSubcategory,
-                setItem: changeItem, setTier: changeTier,
+                setCategory: changeCategory,
+                setSubcategory: changeSubcategory,
+                setItem: changeItem,
+                setTier: changeTier,
                 setEnchant: changeEnchant}}>
                 {child}
             </SetItemContext.Provider>

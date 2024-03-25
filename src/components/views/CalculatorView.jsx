@@ -9,10 +9,11 @@ import {CostPanel} from "../calculator/CostPanel.jsx";
 import {ResourceReturnPanel} from "../calculator/ResourceReturnPanel.jsx";
 import {JournalsReturnPanel} from "../calculator/JournalsReturnPanel.jsx";
 import {ItemProvider} from "../calculator/scripts/ItemProvider.jsx";
+import {CalculatorContext} from "../calculator/scripts/CalculatorContext.jsx";
 
 export function CalculatorView() {
     return (
-        <ItemProvider child={
+        <CalculatorContext child={
             <div className="flex-grow grid grid-cols-3 grid-rows-3 w-screen px-20 py-2">
                 <>
                     <ItemSelection/>
