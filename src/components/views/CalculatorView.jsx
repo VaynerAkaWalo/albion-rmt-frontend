@@ -8,32 +8,35 @@ import {JournalsPanel} from "../calculator/JournalsPanel.jsx";
 import {CostPanel} from "../calculator/CostPanel.jsx";
 import {ResourceReturnPanel} from "../calculator/ResourceReturnPanel.jsx";
 import {JournalsReturnPanel} from "../calculator/JournalsReturnPanel.jsx";
+import {ItemProvider} from "../calculator/scripts/ItemProvider.jsx";
 
 export function CalculatorView() {
     return (
-        <div className="flex-grow grid grid-cols-3 grid-rows-3 w-screen px-20 py-2">
-            <>
-                <ItemSelection/>
-                <ItemInfoPanel/>
-                <div className="border-2 w-full h-full flex items-center justify-center">
-                    <div>Placeholder</div>
-                </div>
-            </>
-            <>
-                <div className="flex flex-col [&>*]:flex-grow">
-                    <LocationSelector/>
-                    <TaxSelector/>
-                    <JournalsSelection/>
-                </div>
-                <ResourcesPanel/>
-                <JournalsPanel/>
-            </>
-            <>
-                <CostPanel/>
-                <ResourceReturnPanel/>
-                <JournalsReturnPanel/>
-            </>
+        <ItemProvider child={
+            <div className="flex-grow grid grid-cols-3 grid-rows-3 w-screen px-20 py-2">
+                <>
+                    <ItemSelection/>
+                    <ItemInfoPanel/>
+                    <div className="border-2 w-full h-full flex items-center justify-center">
+                        <div>Placeholder</div>
+                    </div>
+                </>
+                <>
+                    <div className="flex flex-col [&>*]:flex-grow">
+                        <LocationSelector/>
+                        <TaxSelector/>
+                        <JournalsSelection/>
+                    </div>
+                    <ResourcesPanel/>
+                    <JournalsPanel/>
+                </>
+                <>
+                    <CostPanel/>
+                    <ResourceReturnPanel/>
+                    <JournalsReturnPanel/>
+                </>
 
-        </div>
+            </div>
+        }/>
     )
 }
