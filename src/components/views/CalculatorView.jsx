@@ -8,8 +8,9 @@ import {JournalsPanel} from "../calculator/JournalsPanel.jsx";
 import {CostPanel} from "../calculator/CostPanel.jsx";
 import {ResourceReturnPanel} from "../calculator/ResourceReturnPanel.jsx";
 import {JournalsReturnPanel} from "../calculator/JournalsReturnPanel.jsx";
-import {ItemProvider} from "../calculator/scripts/ItemProvider.jsx";
-import {CalculatorContext} from "../calculator/scripts/CalculatorContext.jsx";
+import {ItemProvider} from "../calculator/context/ItemProvider.jsx";
+import {CalculatorContext} from "../calculator/context/CalculatorContext.jsx";
+import {TemporaryPanel} from "../calculator/TemporaryPanel.jsx";
 
 export function CalculatorView() {
     return (
@@ -18,9 +19,7 @@ export function CalculatorView() {
                 <>
                     <ItemSelection/>
                     <ItemInfoPanel/>
-                    <div className="border-2 w-full h-full flex items-center justify-center">
-                        <div>Placeholder</div>
-                    </div>
+                    <TemporaryPanel/>
                 </>
                 <>
                     <div className="flex flex-col [&>*]:flex-grow">
