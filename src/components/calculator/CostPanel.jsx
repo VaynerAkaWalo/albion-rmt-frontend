@@ -43,7 +43,7 @@ export function CostPanel() {
 
 
     return (
-        <div className="w-full h-full flex flex-col border-2">
+        <div className="w-full flex flex-col border-2">
             <div className="flex flex-row px-2 pt-2">
                 <div className="w-3/5 ml-auto flex justify-between px-2">
                     <span>With focus</span>

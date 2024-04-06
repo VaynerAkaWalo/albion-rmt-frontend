@@ -9,11 +9,15 @@ import {CalculatorView} from "./components/views/CalculatorView.jsx";
 function App() {
     return (
         <>
-            <Header/>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/calculator" element={<CalculatorView/>}/>
-            </Routes>
+            <div className="flex flex-grow flex-col h-screen h-screen">
+                <Header/>
+                <div className="flex-1">
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/calculator" element={<CalculatorView/>}/>
+                    </Routes>
+                </div>
+            </div>
             <Footer/>
         </>
     )

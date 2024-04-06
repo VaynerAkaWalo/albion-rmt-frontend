@@ -8,7 +8,7 @@ export function ResourceReturnPanel() {
     const rr = getResourceReturn()
 
     return (
-        <div className="w-full h-full border-2 flex flex-col justify-between text-center p-3">
+        <div className="w-full border-2 flex flex-col justify-between text-center">
             <div className="grid grid-cols-3 grid-rows-4 [&>*]:border">
                 <div className="col-span-3">From return rate</div>
                 <>

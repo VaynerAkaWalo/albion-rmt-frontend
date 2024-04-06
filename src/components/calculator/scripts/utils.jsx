@@ -1,5 +1,4 @@
 import {useContext, useEffect, useState} from "react";
-import {ItemContext} from "../context/ItemProvider.jsx";
 import {ResourceContext} from "../context/ResourceProvider.jsx";
 import {SettingsContext} from "../context/SettingsContext.jsx";
 

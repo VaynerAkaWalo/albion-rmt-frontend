@@ -8,34 +8,32 @@ import {JournalsPanel} from "../calculator/JournalsPanel.jsx";
 import {CostPanel} from "../calculator/CostPanel.jsx";
 import {ResourceReturnPanel} from "../calculator/ResourceReturnPanel.jsx";
 import {JournalsReturnPanel} from "../calculator/JournalsReturnPanel.jsx";
-import {ItemProvider} from "../calculator/context/ItemProvider.jsx";
 import {CalculatorContext} from "../calculator/context/CalculatorContext.jsx";
 import {TemporaryPanel} from "../calculator/TemporaryPanel.jsx";
 
 export function CalculatorView() {
     return (
         <CalculatorContext child={
-            <div className="flex-grow grid grid-cols-3 grid-rows-3 w-screen px-20 py-2">
-                <>
+            <div className="grid grid-cols-3 w-screen h-full px-20 py-4">
+                <div className="flex flex-col [&>*]:flex-1">
                     <ItemSelection/>
-                    <ItemInfoPanel/>
-                    <TemporaryPanel/>
-                </>
-                <>
                     <div className="flex flex-col [&>*]:flex-grow">
-                        <LocationSelector/>
-                        <TaxSelector/>
-                        <JournalsSelection/>
+                        {/*<LocationSelector/>*/}
+                        {/*<TaxSelector/>*/}
+                        {/*<JournalsSelection/>*/}
                     </div>
-                    <ResourcesPanel/>
-                    <JournalsPanel/>
-                </>
-                <>
-                    <CostPanel/>
-                    <ResourceReturnPanel/>
-                    <JournalsReturnPanel/>
-                </>
-
+                    {/*<CostPanel/>*/}
+                </div>
+                <div className="flex flex-col [&>*]:flex-1">
+                    {/*<ItemInfoPanel/>*/}
+                    {/*<ResourcesPanel/>*/}
+                    {/*<ResourceReturnPanel/>*/}
+                </div>
+                <div className="flex flex-col [&>*]:flex-1">
+                {/*    <TemporaryPanel/>*/}
+                {/*    <JournalsPanel/>*/}
+                {/*    <JournalsReturnPanel/>*/}
+                </div>
             </div>
         }/>
     )
