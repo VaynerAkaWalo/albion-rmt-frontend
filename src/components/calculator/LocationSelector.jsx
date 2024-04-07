@@ -1,4 +1,3 @@
-import {SelectComponent} from "../utils/SelectComponent.jsx";
 import Select from "react-select";
 
 export function LocationSelector() {
@@ -13,7 +12,7 @@ export function LocationSelector() {
 
     return (
         <div className="border-b grid grid-cols-2 [&>*]:m-auto">
-            <Select className="w-4/5" menuPosition={"fixed"} options={createOptions()} styles={customStyles} isSearchable={false} />
+            <Select className="w-4/5" menuPosition={"fixed"} options={createOptions()} styles={customStyles} isSearchable={false} defaultValue={createOptions()[0]}/>
             <div className="flex flex-col text-center">
                 <span>Recommended City</span>
                 <span>Thetford</span>
