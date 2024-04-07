@@ -30,9 +30,9 @@ export function CalculatorView() {
                     <ResourceReturnPanel/>
                 </div>
                 <div className="flex flex-col [&>*]:flex-1">
-                    {/*<TemporaryPanel/>*/}
-                    {/*<JournalsPanel/>*/}
-                    {/*<JournalsReturnPanel/>*/}
+                    <TemporaryPanel/>
+                    <JournalsPanel/>
+                    <JournalsReturnPanel/>
                 </div>
             </div>
         }/>
