@@ -25,8 +25,9 @@ export function CalculatorView() {
                     <CostPanel/>
                 </div>
                 <div className="flex flex-col [&>*]:flex-1">
-                    {/*<ItemInfoPanel/>*/}
-                    {/*<ResourcesPanel/>*/}
+                    <ItemInfoPanel/>
+                    <ResourcesPanel/>
+                    <div/>
                     {/*<ResourceReturnPanel/>*/}
                 </div>
                 <div className="flex flex-col [&>*]:flex-1">
