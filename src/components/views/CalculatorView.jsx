@@ -18,11 +18,11 @@ export function CalculatorView() {
                 <div className="flex flex-col [&>*]:flex-1">
                     <ItemSelection/>
                     <div className="flex flex-col [&>*]:flex-grow">
-                        {/*<LocationSelector/>*/}
-                        {/*<TaxSelector/>*/}
-                        {/*<JournalsSelection/>*/}
+                        <LocationSelector/>
+                        <TaxSelector/>
+                        <JournalsSelection/>
                     </div>
-                    {/*<CostPanel/>*/}
+                    <CostPanel/>
                 </div>
                 <div className="flex flex-col [&>*]:flex-1">
                     {/*<ItemInfoPanel/>*/}

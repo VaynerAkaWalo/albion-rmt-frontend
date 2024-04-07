@@ -3,7 +3,7 @@ import {GlobalContext} from "./context/CalculatorContext.jsx";
 import Select from "react-select";
 
 export function ItemSelection() {
-    const {isInitialized, itemData, setSelectedItem} = useContext(GlobalContext)
+    const {isInitialized ,setInitialized, itemData, setSelectedItem} = useContext(GlobalContext)
     const [categoryOptions, setCategoryOptions] = useState([])
     const [subcategoryOptions, setSubcategoryOptions] = useState([])
     const [itemOptions, setItemOptions] = useState([])
@@ -59,6 +59,7 @@ export function ItemSelection() {
         if (!itemData['categories'] || !category || !subcategory || !item) return;
 
         const itemInfo = itemData['categories'][category['value']]['subcategories'][subcategory['value']]['items'][item['value']]
+        setInitialized(true)
         setSelectedItem(prev => ({
             ...prev,
             ...itemInfo,

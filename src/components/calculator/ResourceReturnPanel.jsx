@@ -1,11 +1,10 @@
 import {useContext} from "react";
 import {ResourceContext} from "./context/ResourceProvider.jsx";
-import {getResourceReturn} from "./scripts/utils.jsx";
 
 export function ResourceReturnPanel() {
     const {resource1, resource2} = useContext(ResourceContext)
 
-    const rr = getResourceReturn()
+    const rr = null
 
     return (
         <div className="w-full border-2 flex flex-col justify-between text-center">
