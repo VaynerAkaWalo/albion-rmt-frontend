@@ -24,14 +24,14 @@ export function ResourcesPanel() {
         <div className="w-full border-2 grid grid-cols-5 grid-rows-5">
             <>
                 <div className="col-span-2 row-span-3 flex justify-center items-center">
-                    <img className="w-4/5" src={image(resource1)} alt={resource1}/>
+                    <img src={image(resource1)} alt={resource1}/>
                 </div>
                 <div className="row-span-3 flex flex-col justify-center items-center">
                     <span>Ratio</span>
                     <span>{`${resource1Ratio}:${resource2Ratio}`}</span>
                 </div>
                 <div className="col-span-2 row-span-3 flex justify-center items-center">
-                    <img className="w-4/5" src={image(resource2)} alt={resource2}/>
+                    <img src={image(resource2)} alt={resource2}/>
                 </div>
             </>
             <>

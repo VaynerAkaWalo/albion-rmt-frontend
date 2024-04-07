@@ -2,7 +2,7 @@ import {SelectComponent} from "../utils/SelectComponent.jsx";
 
 export function LocationSelector() {
     return (
-        <div className="border-2 columns-2 p-4 [&>*]:mx-2">
+        <div className="border-b columns-2 p-4 [&>*]:mx-2">
             <SelectComponent {...locations}/>
             <div className="flex flex-col text-center">
                 <label htmlFor="preffered city">Recommended City</label>

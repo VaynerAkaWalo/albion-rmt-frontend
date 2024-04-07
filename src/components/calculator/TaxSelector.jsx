@@ -7,7 +7,7 @@ export function TaxSelector() {
     const {changeFee, changeRrWoF, changeRrWF} = React.useContext(SetSettingsContext)
 
     return (
-        <div className="border-2 columns-3 flex justify-around">
+        <div className="border-y columns-3 flex justify-around">
             <TextBoxWithLabel name="Fee" value={fee} changeValue={changeFee}/>
             <TextBoxWithLabel name="RR w/o focus" value={rrWoF} changeValue={changeRrWoF}/>
             <TextBoxWithLabel name="RR w focus" value={rrWF} changeValue={changeRrWF}/>

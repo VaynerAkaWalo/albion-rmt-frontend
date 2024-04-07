@@ -24,3 +24,7 @@
     height: 83vh;
 }
 
+img {
+    width: calc(100vh * .15);
+}
+
