@@ -17,7 +17,7 @@ export function CalculatorView() {
             <div className="grid grid-cols-3 w-screen h-full px-20 py-4">
                 <div className="flex flex-col [&>*]:flex-1">
                     <ItemSelection/>
-                    <div className="flex flex-col [&>*]:flex-grow">
+                    <div className="flex w-full flex-col border-2 [&>*]:flex-grow">
                         <LocationSelector/>
                         <TaxSelector/>
                         <JournalsSelection/>
@@ -27,13 +27,12 @@ export function CalculatorView() {
                 <div className="flex flex-col [&>*]:flex-1">
                     <ItemInfoPanel/>
                     <ResourcesPanel/>
-                    <div/>
-                    {/*<ResourceReturnPanel/>*/}
+                    <ResourceReturnPanel/>
                 </div>
                 <div className="flex flex-col [&>*]:flex-1">
-                {/*    <TemporaryPanel/>*/}
-                {/*    <JournalsPanel/>*/}
-                {/*    <JournalsReturnPanel/>*/}
+                    {/*<TemporaryPanel/>*/}
+                    {/*<JournalsPanel/>*/}
+                    {/*<JournalsReturnPanel/>*/}
                 </div>
             </div>
         }/>

@@ -1,6 +1,6 @@
 export function JournalsSelection() {
     return (
-        <div className="text-center p-4 border-2">
+        <div className="text-center p-4 border-t">
             Journals destination placeholder
         </div>
     )
