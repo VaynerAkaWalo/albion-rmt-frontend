@@ -9,6 +9,8 @@ export function CalculatorContext({child}) {
     const [initialized, setInitialized] = useState(true)
     const [itemData, setItemData] = useState({});
     const [selectedItem, setSelectedItem] = useState({})
+    const [detailedItemInfo, setDetailedItemInfo] = useState(placeholder)
+    const [settings, setSettings] = useState(settingsPh)
 
     useEffect(() => {
         fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/categories")
@@ -22,10 +24,14 @@ export function CalculatorContext({child}) {
     return (
         <GlobalContext.Provider value={{
             isInitialized: initialized,
-            setInitialized: setInitialized,
-            itemData: itemData,
+            setInitialized,
+            itemData,
             selectedItem: selectedItem,
-            setSelectedItem: setSelectedItem
+            setSelectedItem: setSelectedItem,
+            detailedItemInfo,
+            setDetailedItemInfo,
+            settings,
+            setSettings
         }}>
             <ResourceProvider child={
                 <SettingsProvider child={
@@ -35,4 +41,22 @@ export function CalculatorContext({child}) {
         </GlobalContext.Provider>
 
     )
+}
+
+const placeholder = {
+    resourceOne: "PLANKS",
+    resourceOneDisplayName: "Planks",
+    resourceTwo: "CLOTH",
+    resourceTwoDisplayName: "Cloth",
+    resourceOneAmount: "16",
+    resourceTwoAmount: "8",
+    resourceOnePrice: 1000,
+    resourceTwoPrice: 1000,
+}
+
+const settingsPh = {
+    returnRateWoF: 20,
+    returnRateWF: 30,
+    tax: 15,
+    amountMultiplier: 1,
 }

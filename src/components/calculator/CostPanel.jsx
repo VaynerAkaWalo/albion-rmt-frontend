@@ -1,52 +1,33 @@
-import {TextBoxWithLabelH} from "../utils/textbox/TextBoxWithLabelH.jsx";
-import {TextBoxDualWithLabelH} from "../utils/textbox/TextBoxDualWithLabelH.jsx";
-import {useContext, useEffect, useState} from "react";
-import {SettingsContext} from "./context/SettingsContext.jsx";
-import {ResourceContext} from "./context/ResourceProvider.jsx";
+import {useContext} from "react";
 import {GlobalContext} from "./context/CalculatorContext.jsx";
+import {calculateItemValue, calculateResourceReturn} from "./scripts/utils.js";
 
 export function CostPanel() {
-    const {isInitialized, selectedItem} = useContext(GlobalContext)
-    const {amount, fee, rrWoF, rrWF} = useContext(SettingsContext)
-    const {resource1Ratio, resource2Ratio, resource1Price, resource2Price} = useContext(ResourceContext)
-    const [itemValue, setItemValue] = useState(0)
-    const [returnRate, setReturnRate] = useState({resource1: [0,0], resource2: [0,0]});
+    const {isInitialized, selectedItem, settings, detailedItemInfo} = useContext(GlobalContext)
+    const {resourceOneAmount, resourceTwoAmount, resourceOnePrice, resourceTwoPrice} = detailedItemInfo
+    const {tax, amountMultiplier} = settings
 
-    useEffect(() => {
-        if (!isInitialized) return;
-
-        setItemValue(selectedItem['tier'] * resource1Ratio * resource2Ratio * (1 + selectedItem['enchant']))
-
-    }, [selectedItem, resource1Ratio, resource2Ratio]);
-
-    useEffect(() => {
-        if (!isInitialized) return;
-        const calcRR = (ratio) => {return [resource1Ratio * amount * rrWoF / 100, resource1Ratio * amount * rrWF / 100]}
-
-        setReturnRate({
-            resource1: calcRR(resource1Ratio),
-            resource2: calcRR(resource2Ratio)
-        })
-    }, [resource1Ratio, resource2Ratio, amount, rrWoF, rrWF]);
+    const {resourceOneWoF, resourceOneWF, resourceTwoWoF, resourceTwoWF} = calculateResourceReturn(settings, detailedItemInfo)
+    const itemValue = calculateItemValue(detailedItemInfo, selectedItem)
 
     function resourcePrice() {
         if (!isInitialized) return;
-        return (resource1Price * resource1Ratio + resource2Price * resource2Ratio) * amount
+        return (resourceOnePrice * resourceOneAmount + resourceTwoPrice * resourceTwoAmount) * amountMultiplier
     }
 
-    function tax() {
+    function calcFee() {
         if (!isInitialized) return;
-        return itemValue / 20 * fee * amount
+        return itemValue / 20 * tax * amountMultiplier
     }
 
     function returnFromRrWoF() {
         if (!isInitialized) return;
-        return returnRate['resource1'][0] * resource1Price + returnRate['resource2'][0] * resource2Price;
+        return resourceOneWoF * resourceOnePrice + resourceTwoWoF * resourceTwoPrice;
     }
 
     function returnFromRrWF() {
         if (!isInitialized) return;
-        return returnRate['resource1'][1] * resource1Price + returnRate['resource2'][1] * resource2Price;
+        return resourceOneWF * resourceOnePrice + resourceTwoWF * resourceTwoPrice;
     }
 
     function returnFromJournals() {
@@ -55,12 +36,12 @@ export function CostPanel() {
 
     function totalCostWoF() {
         if (!isInitialized) return;
-        return resourcePrice() + tax() - returnFromRrWoF() - returnFromJournals()
+        return resourcePrice() + calcFee() - returnFromRrWoF() - returnFromJournals()
     }
 
     function totalCostWF() {
         if (!isInitialized) return;
-        return resourcePrice() + tax() - returnFromRrWF() - returnFromJournals()
+        return resourcePrice() + calcFee() - returnFromRrWF() - returnFromJournals()
     }
 
     return (
@@ -76,7 +57,7 @@ export function CostPanel() {
                 </>
                 <>
                     <div className="col-span-2">Tax</div>
-                    <div className="col-span-3 text-right border">{tax()}</div>
+                    <div className="col-span-3 text-right border">{calcFee()}</div>
                 </>
                 <>
                     <div className="col-span-2">Return from RR</div>
