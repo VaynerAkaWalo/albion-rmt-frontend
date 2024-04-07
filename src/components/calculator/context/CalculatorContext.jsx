@@ -21,6 +21,27 @@ export function CalculatorContext({child}) {
             .catch(err => console.log(err))
     }, []);
 
+    useEffect(() => {
+        if (selectedItem['name']){
+            fetch(`https://blamedevs.com:8443/albion-rmt-backend/api/v1/item/${selectedItem['name']}`)
+                .then(data => {
+                    if (data.status === 500) {
+                        throw new Error("could not load item data")
+                    }
+                    return data.json()
+                })
+                .then(json => {
+                    const {resourceOne, resourceTwo} = json
+                    setDetailedItemInfo(prev => ({
+                        ...prev,
+                        resourceOne: resourceOne['name'], resourceOneDisplayName: resourceOne['displayName'], resourceOneAmount: resourceOne['amount'],
+                        resourceTwo: resourceTwo['name'], resourceTwoDisplayName: resourceTwo['displayName'], resourceTwoAmount: resourceTwo['amount'],
+                    }))
+                })
+                .catch(err => console.log(err))
+        }
+    }, [selectedItem]);
+
     return (
         <GlobalContext.Provider value={{
             isInitialized: initialized,
