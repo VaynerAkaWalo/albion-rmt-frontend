@@ -11,7 +11,7 @@ export function CalculatorContext({child}) {
     const [selectedItem, setSelectedItem] = useState({})
 
     useEffect(() => {
-        fetch("http://195.201.239.195:8050/albion-rmt-backend/api/v1/categories")
+        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/categories")
             .then(data => data.json())
             .then(json => {
                 setItemData(json)
