@@ -19,12 +19,11 @@ export function ItemInfoPanel() {
 
     return (
         <div className="w-full flex justify-center items-center border-2">
-            <>
-                <div className="flex flex-col justify-center text-center">
-                    <img src={image} alt="item"/>
-                    <label htmlFor="image">{selectedItem['displayName'] ? selectedItem['displayName'] : selectedItem['name']}</label>
-                </div>
-            </>
+            <div className="flex flex-col justify-center items-center text-center">
+                <img src={image} alt="item"/>
+                <label
+                    htmlFor="image">{selectedItem['displayName'] ? selectedItem['displayName'] : selectedItem['name']}</label>
+            </div>
         </div>
     )
 }
