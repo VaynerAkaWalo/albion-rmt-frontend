@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {GlobalContext} from "./context/CalculatorContext.jsx";
-import {calculateResourceReturn} from "./scripts/utils.js";
+import {calculateResourceReturn, floatFormatter} from "./scripts/utils.js";
 
 export function ResourceReturnPanel() {
     const {settings, detailedItemInfo} = useContext(GlobalContext)
@@ -18,13 +18,13 @@ export function ResourceReturnPanel() {
                 </>
                 <>
                     <div>{resourceOneDisplayName}</div>
-                    <div>{resourceOneWoF}</div>
-                    <div>{resourceOneWF}</div>
+                    <div>{floatFormatter(resourceOneWoF)}</div>
+                    <div>{floatFormatter(resourceOneWF)}</div>
                 </>
                 <>
                     <div>{resourceTwoDisplayName}</div>
-                    <div>{resourceTwoWoF}</div>
-                    <div>{resourceTwoWF}</div>
+                    <div>{floatFormatter(resourceTwoWoF)}</div>
+                    <div>{floatFormatter(resourceTwoWF)}</div>
                 </>
             </div>
             <div className="grid grid-cols-3 grid-rows-4 [&>*]:border">
