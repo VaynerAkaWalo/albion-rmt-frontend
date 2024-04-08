@@ -25,7 +25,22 @@ export function calculateItemValue(detailedItemInfo, selectedItem) {
     const {resourceOneAmount, resourceTwoAmount} = detailedItemInfo
     const {tier, enchant} = selectedItem
 
-    return tier * resourceOneAmount * resourceTwoAmount * (1 + enchant)
+    const multi = tier + (tier > 3 ? enchant : 0)
+
+    return (resourceOneAmount + resourceTwoAmount) * Math.pow(2, multi);
+}
+
+export function intFormatter(number) {
+    return Math.round(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+}
+
+export function floatFormatter(number) {
+    return naiveRound(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+}
+
+function naiveRound(num, decimalPlaces = 2) {
+    var p = Math.pow(10, decimalPlaces);
+    return Math.round(num * p) / p;
 }
 
 

@@ -1,12 +1,12 @@
 import React, {useContext} from "react";
-import {SettingsContext} from "./context/SettingsContext.jsx";
 import {GlobalContext} from "./context/CalculatorContext.jsx";
 import trash from "/T1_TRASH.png";
+import {intFormatter} from "./scripts/utils.js";
 
 export function ResourcesPanel() {
-    const {selectedItem, isInitialized, detailedItemInfo, setDetailedItemInfo} = useContext(GlobalContext)
-    const {amount} = React.useContext(SettingsContext)
-    const {resourceOnePrice, resourceTwoPrice} = detailedItemInfo
+    const {selectedItem, isInitialized, detailedItemInfo, setDetailedItemInfo, settings} = useContext(GlobalContext)
+    const {resourceOnePrice, resourceTwoPrice, resourceOneAmount, resourceTwoAmount} = detailedItemInfo
+    const {amountMultiplier} = settings
 
     function image(resource) {
         if (!isInitialized) return trash;
@@ -19,11 +19,19 @@ export function ResourcesPanel() {
     }
 
     function changeResourceOnePrice(e) {
-        setDetailedItemInfo(prev => ({...prev, resourceOnePrice: e.target.value}))
+        const value = e.target.value.replace(/ /g, '');
+
+        if (!isNaN(value)) {
+            setDetailedItemInfo(prev => ({...prev, resourceOnePrice: value}))
+        }
     }
 
     function changeResourceTwoPrice(e) {
-        setDetailedItemInfo(prev => ({...prev, resourceTwoPrice: e.target.value}))
+        const value = e.target.value.replace(/\s/g, '');
+
+        if (!isNaN(value)) {
+            setDetailedItemInfo(prev => ({...prev, resourceTwoPrice: value}))
+        }
     }
 
     return (
@@ -41,14 +49,14 @@ export function ResourcesPanel() {
                 </div>
             </>
             <>
-                <div className="col-span-2 text-center my-auto">{detailedItemInfo['resourceOneAmount'] * amount}</div>
+                <div className="col-span-2 text-center my-auto">{resourceOneAmount * amountMultiplier}</div>
                 <div className="text-center my-auto">Quantity</div>
-                <div className="col-span-2 text-center my-auto">{detailedItemInfo['resourceTwoAmount'] * amount}</div>
+                <div className="col-span-2 text-center my-auto">{resourceTwoAmount * amountMultiplier}</div>
             </>
             <>
-                <input className="col-span-2 my-2 mx-5 text-right" type="text" value={resourceOnePrice} onChange={changeResourceOnePrice}/>
+                <input className="col-span-2 my-2 mx-5 text-right" type="text" value={intFormatter(resourceOnePrice)} onChange={changeResourceOnePrice}/>
                 <span className="text-center my-auto">Price</span>
-                <input className="col-span-2 col-start-4 my-2 mx-5 text-right" type="text" value={resourceTwoPrice} onChange={changeResourceTwoPrice}/>
+                <input className="col-span-2 col-start-4 my-2 mx-5 text-right" type="text" value={intFormatter(resourceTwoPrice)} onChange={changeResourceTwoPrice}/>
             </>
         </div>
     )

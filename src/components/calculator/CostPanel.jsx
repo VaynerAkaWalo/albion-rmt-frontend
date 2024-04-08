@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {GlobalContext} from "./context/CalculatorContext.jsx";
-import {calculateItemValue, calculateResourceReturn} from "./scripts/utils.js";
+import {calculateItemValue, calculateResourceReturn, intFormatter} from "./scripts/utils.js";
 
 export function CostPanel() {
     const {isInitialized, selectedItem, settings, detailedItemInfo} = useContext(GlobalContext)
@@ -17,7 +17,8 @@ export function CostPanel() {
 
     function calcFee() {
         if (!isInitialized) return;
-        return itemValue / 20 * tax * amountMultiplier
+        const nutritionConsumption = itemValue * amountMultiplier * 0.1125
+        return nutritionConsumption * tax / 100
     }
 
     function returnFromRrWoF() {
@@ -53,27 +54,27 @@ export function CostPanel() {
                 </>
                 <>
                     <div className="col-span-2">Total resource cost</div>
-                    <div className="col-span-3 text-right border">{resourcePrice()}</div>
+                    <div className="col-span-3 text-right border">{intFormatter(resourcePrice())}</div>
                 </>
                 <>
                     <div className="col-span-2">Tax</div>
-                    <div className="col-span-3 text-right border">{calcFee()}</div>
+                    <div className="col-span-3 text-right border">{intFormatter(calcFee())}</div>
                 </>
                 <>
                     <div className="col-span-2">Return from RR</div>
-                    <div className="border text-right">{returnFromRrWoF()}</div>
+                    <div className="border text-right">{intFormatter(returnFromRrWoF())}</div>
                     <div></div>
-                    <div className="border text-right">{returnFromRrWF()}</div>
+                    <div className="border text-right">{intFormatter(returnFromRrWF())}</div>
                 </>
                 <>
                     <div className="col-span-2">Return from journals</div>
-                    <div className="col-span-3 border text-right">{returnFromJournals()}</div>
+                    <div className="col-span-3 border text-right">{intFormatter(returnFromJournals())}</div>
                 </>
                 <>
                     <div className="col-span-2">Total cost</div>
-                    <div className="border text-right">{totalCostWoF()}</div>
+                    <div className="border text-right">{intFormatter(totalCostWoF())}</div>
                     <div></div>
-                    <div className="border text-right">{totalCostWF()}</div>
+                    <div className="border text-right">{intFormatter(totalCostWF())}</div>
                 </>
             </div>
         </div>
