@@ -5,6 +5,7 @@ import Header from "./components/headers/Header.jsx";
 import {Home} from "./components/views/Home.jsx";
 import Footer from "./components/Footer.jsx";
 import {CalculatorView} from "./components/views/CalculatorView.jsx";
+import {BlackMarketView} from "./components/views/BlackMarketView.jsx";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         <Route path="/calculator" element={<CalculatorView/>}/>
+                        <Route path="/black-market" element={<BlackMarketView/>}/>
                     </Routes>
                 </div>
             </div>

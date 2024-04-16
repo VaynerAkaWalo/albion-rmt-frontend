@@ -10,7 +10,7 @@ function Header() {
                 <Link to={"/"}>Albion RMT Empire Tool</Link>
             </li>
             <li>
-                <Link to={"/flips"}>BM Flips</Link>
+                <Link to={"/black-market"}>BM Flips</Link>
             </li>
         </ul>
     )
