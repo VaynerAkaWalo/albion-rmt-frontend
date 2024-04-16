@@ -5,7 +5,7 @@ import {intFormatter} from "./scripts/utils.js";
 
 export function ResourcesPanel() {
     const {selectedItem, isInitialized, detailedItemInfo, setDetailedItemInfo, settings} = useContext(GlobalContext)
-    const {resourceOnePrice, resourceTwoPrice, resourceOneAmount, resourceTwoAmount} = detailedItemInfo
+    const {resourceOnePrice, resourceTwoPrice, resourceOneAmount, resourceTwoAmount, resourceTwo} = detailedItemInfo
     const {amountMultiplier} = settings
 
     function image(resource) {
@@ -14,7 +14,7 @@ export function ResourcesPanel() {
     }
 
     function enchantPostfix() {
-        if (!isInitialized || selectedItem['enchant'] === 0) return "";
+        if (!isInitialized || selectedItem['enchant'] === 0 || resourceTwo === "TRASH") return "";
         return `_LEVEL${selectedItem['enchant']}`
     }
 
