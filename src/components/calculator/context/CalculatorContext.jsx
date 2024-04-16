@@ -31,7 +31,8 @@ export function CalculatorContext({child}) {
                     return data.json()
                 })
                 .then(json => {
-                    const {resourceOne, resourceTwo} = json
+                    const {resourceOne} = json
+                    const resourceTwo = typeof json['resourceTwo'] !== 'undefined' ? json['resourceTwo'] : {name: "TRASH", displayName: "Trash", amount: 0}
                     setDetailedItemInfo(prev => ({
                         ...prev,
                         resourceOne: resourceOne['name'], resourceOneDisplayName: resourceOne['displayName'], resourceOneAmount: resourceOne['amount'],
