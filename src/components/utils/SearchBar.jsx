@@ -1,15 +1,10 @@
 import {useState} from "react";
 
-export function SearchBar() {
-    const [value, setValue] = useState()
-
-    function handleChange(e) {
-        setValue(e.target.value)
-    }
+export function SearchBar({text, setText}) {
 
     return (
         <div className="">
-            <input className="border-2 border-b-gray-400" type="text" value={value} onChange={handleChange}/>
+            <input className="border-2 border-b-gray-400" type="text" value={text} onChange={setText}/>
         </div>
     )
 }

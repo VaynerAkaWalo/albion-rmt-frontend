@@ -15,7 +15,7 @@ export function BMItemRow({systemName, amount, unitPrice, tier, enchant, quality
         <div className="w-full px-10 py-2 h-30 flex justify-between border-2 [&>*]: items-center">
             <img src={image()} alt="xd"/>
             <div>amount: {intFormatter(amount)}</div>
-            <div>price: {intFormatter(unitPrice)}</div>
+            <div>price: {intFormatter(unitPrice / 10000)}</div>
         </div>
     )
 }
