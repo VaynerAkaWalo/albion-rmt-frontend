@@ -7,18 +7,24 @@ export function BlackMarketContent() {
 
 
     useEffect(() => {
-        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/marketdata")
-            .then(data => data.json())
-            .then(json => {
-                console.log(json)
-                setItems(json)
-            })
-            .catch(err => console.log(err))
+        const getMarketData = () => {
+            fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/marketdata")
+                .then(data => data.json())
+                .then(json => {
+                    setItems(json)
+                })
+                .catch(err => console.log(err))
+        }
+        getMarketData()
+        const interval = setInterval(() => {
+            getMarketData()
+        },5*1000);
+        return () => clearInterval(interval)
     }, []);
 
     return (
         <div className="w-screen overflow-x-scroll">
-            {items.map(x => {
+            {items.sort((x, y) => y['unitPrice'] - x['unitPrice']).map(x => {
                 const {item, amount, unitPrice, tier, enchant, quality} = x
                 return <BMItemRow systemName={item['id']}
                                   amount={amount}
