@@ -10,7 +10,7 @@ import {BlackMarketView} from "./components/views/BlackMarketView.jsx";
 function App() {
     return (
         <>
-            <div className="flex flex-grow flex-col h-screen h-screen">
+            <div className="flex flex-grow flex-col">
                 <Header/>
                 <div className="flex-1">
                     <Routes>
