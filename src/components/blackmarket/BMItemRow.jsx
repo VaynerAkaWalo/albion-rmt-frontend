@@ -35,7 +35,7 @@ export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant
     }
 
     function resolveColor() {
-        if (hours > 3) {
+        if (hours >= 3) {
             return "text-red-600"
         }
         else if(hours > 0 || minutes > 30) {
