@@ -1,6 +1,6 @@
 import {intFormatter} from "../calculator/scripts/utils.js";
 
-export function BMItemRow({systemName, amount, unitPrice, tier, enchant, quality, lastUpdate}) {
+export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant, quality, lastUpdate}) {
 
     function image() {
         return `https://render.albiononline.com/v1/item/T${tier}_${systemName.toUpperCase()}${enchantPostfix()}.png?quality=${quality}`
@@ -42,12 +42,19 @@ export function BMItemRow({systemName, amount, unitPrice, tier, enchant, quality
         }
     }
 
+    function deleteItem(e) {
+        fetch(`https://blamedevs.com:8443/albion-rmt-backend/api/v1/marketdata/${orderId}`, {
+            method: "DELETE"
+        })
+    }
+
     return (
         <div className="w-full px-10 py-2 h-30 flex justify-between border-2 [&>*]: items-center">
             <img src={image()} alt="xd"/>
             <div>amount: {intFormatter(amount)}</div>
             <div>last seen: {prettyTime()}</div>
             <div>price: {intFormatter(unitPrice / 10000)}</div>
+            <button className="font-bold border-2 rounded p-6 bg-red-700 border-red-700" onClick={deleteItem}>Delete Order</button>
         </div>
     )
 }
