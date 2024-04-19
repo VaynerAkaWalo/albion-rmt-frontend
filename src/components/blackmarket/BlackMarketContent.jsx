@@ -33,9 +33,10 @@ export function BlackMarketContent({filters}) {
     return (
         <div className="w-screen h-full">
             {items.filter(predicate).sort((x, y) => y['unitPrice'] - x['unitPrice']).map(x => {
-                const {name, amount, unitPrice, tier, enchant, quality, lastUpdate} = x
+                const {name, orderId, amount, unitPrice, tier, enchant, quality, lastUpdate} = x
                 return <BMItemRow systemName={name}
                                   amount={amount}
+                                  orderId={orderId}
                                   enchant={enchant}
                                   quality={quality}
                                   tier={tier}
