@@ -22,7 +22,7 @@ export function BlackMarketContent({filters}) {
         return () => clearInterval(interval)
     }, []);
 
-    const searchPredicate = item => search === "" || item['item']['id'].toUpperCase().includes(search.toUpperCase())
+    const searchPredicate = item => search === "" || item['displayName'].toUpperCase().includes(search.toUpperCase())
     const tierPredicate = item => tier['value'] === "all" || item['tier'] === tier['value']
     const enchantPredicate = item => enchant['value'] === "all" || item['enchant'] === enchant['value']
     const qualityPredicate = item => quality['value'] === "all" || item['quality'] === quality['value']
@@ -33,13 +33,14 @@ export function BlackMarketContent({filters}) {
     return (
         <div className="w-screen h-full">
             {items.filter(predicate).sort((x, y) => y['unitPrice'] - x['unitPrice']).map(x => {
-                const {item, amount, unitPrice, tier, enchant, quality} = x
-                return <BMItemRow systemName={item['id']}
+                const {name, amount, unitPrice, tier, enchant, quality, lastUpdate} = x
+                return <BMItemRow systemName={name}
                                   amount={amount}
                                   enchant={enchant}
                                   quality={quality}
                                   tier={tier}
-                                  unitPrice={unitPrice}/>
+                                  unitPrice={unitPrice}
+                                  lastUpdate={lastUpdate}/>
             })}
         </div>
     )
