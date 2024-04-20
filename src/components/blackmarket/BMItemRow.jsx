@@ -1,6 +1,8 @@
 import {intFormatter} from "../calculator/scripts/utils.js";
+import {transmutationCost} from "../../utils/TransmutationUtil.js"
 
-export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant, quality, lastUpdate}) {
+export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant, quality, lastUpdate, itemInfo}) {
+    const {resourceOne, resourceTwo} = itemInfo.find(item => item['name'] === systemName)
     let duration = Date.now() - lastUpdate
 
     let minutes = Math.round(duration / 1000 / 60) % 60
@@ -35,7 +37,7 @@ export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant
     }
 
     function resolveColor() {
-        if (hours >= 3) {
+        if (days > 0 || hours >= 3) {
             return "text-red-600"
         }
         else if(hours > 0 || minutes > 30) {
@@ -46,13 +48,31 @@ export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant
         }
     }
 
+    function getResourceAmount(res) {
+        if (res === undefined) {
+            return 0;
+        }
+        return parseInt(res['amount'])
+    }
+
+    function getTransmutationCost() {
+        if (enchant === 4 || tier < 4) {
+            return "Unavailable"
+        }
+        return intFormatter(transmutationCost[tier - 4][enchant] * (getResourceAmount(resourceOne) + getResourceAmount(resourceTwo)))
+
+    }
+
     return (
-        <div className="w-full px-10 py-2 h-30 flex justify-between border-2 [&>*]: items-center">
-            <img src={image()} alt="xd"/>
-            <div>amount: {intFormatter(amount)}</div>
-            <div className={resolveColor()}>last seen: {prettyTime()}</div>
-            <div>price: {intFormatter(unitPrice / 10000)}</div>
-            <button className="font-bold border-2 rounded p-6 bg-red-700 border-red-700 text-white" onClick={deleteItem}>Delete Order</button>
+        <div className="w-full px-10 py-2 h-30 flex justify-between border-2 [&>*]:flex-1 items-center text-center">
+            <div className="flex justify-center">
+                <img className="h-30" src={image()} alt="xd"/>
+            </div>
+            <div>{intFormatter(amount)}</div>
+            <div>{intFormatter(unitPrice / 10000)}</div>
+            <div>{getTransmutationCost()}</div>
+            <div className={resolveColor()}>{prettyTime()}</div>
+            <button className="font-bold border-2 py-3 rounded bg-red-700 border-red-700 text-white" onClick={deleteItem}>Delete Order</button>
         </div>
     )
 }

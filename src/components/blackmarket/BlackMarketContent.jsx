@@ -4,7 +4,15 @@ import {useEffect, useState} from "react";
 
 export function BlackMarketContent({filters}) {
     const [items, setItems] = useState([])
+    const [itemInfo, setItemInfo] = useState({})
     const {search, tier, enchant, quality} = filters
+
+    const getItemData = () => {
+        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/item")
+            .then(data => data.json())
+            .then(json => setItemInfo(json))
+            .catch(err => console.log(err))
+    }
 
     useEffect(() => {
         const getMarketData = () => {
@@ -15,6 +23,7 @@ export function BlackMarketContent({filters}) {
                 })
                 .catch(err => console.log(err))
         }
+        getItemData()
         getMarketData()
         const interval = setInterval(() => {
             getMarketData()
@@ -32,6 +41,14 @@ export function BlackMarketContent({filters}) {
 
     return (
         <div className="w-screen h-full">
+            <div className="w-full h-10 px-10 py-2 sticky top-0 z-50 border-b-2 flex flex-row justify-between [&>*]:flex-1 text-center">
+                <div>Item</div>
+                <div>Amount</div>
+                <div>Price</div>
+                <div>Transmutation Cost</div>
+                <div>Last seen</div>
+                <div>Delete</div>
+            </div>
             {items.filter(predicate).sort((x, y) => y['unitPrice'] - x['unitPrice']).map(x => {
                 const {name, orderId, amount, unitPrice, tier, enchant, quality, lastUpdate} = x
                 return <BMItemRow systemName={name}
@@ -41,7 +58,8 @@ export function BlackMarketContent({filters}) {
                                   quality={quality}
                                   tier={tier}
                                   unitPrice={unitPrice}
-                                  lastUpdate={lastUpdate}/>
+                                  lastUpdate={lastUpdate}
+                                  itemInfo={itemInfo}/>
             })}
         </div>
     )
