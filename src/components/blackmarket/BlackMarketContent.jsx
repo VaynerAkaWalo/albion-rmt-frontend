@@ -41,7 +41,7 @@ export function BlackMarketContent({filters}) {
 
     return (
         <div className="w-screen h-full">
-            <div className="w-full h-10 px-10 py-2 flex flex-row justify-between [&>*]:flex-1 text-center">
+            <div className="w-full h-10 px-10 py-2 sticky top-0 z-50 border-b-2 flex flex-row justify-between [&>*]:flex-1 text-center">
                 <div>Item</div>
                 <div>Amount</div>
                 <div>Price</div>
