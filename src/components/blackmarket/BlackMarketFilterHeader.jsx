@@ -47,7 +47,9 @@ function tiers() {
 }
 
 function enchants() {
-    const array = [{label: "all", value: "all"}];
+    const array = [
+        {label: "all", value: "all"},
+        {label: "not 4", value: "not 4"}];
     for (let i = 0; i < 5; i++) {
         array.push({label: i, value:i})
     }

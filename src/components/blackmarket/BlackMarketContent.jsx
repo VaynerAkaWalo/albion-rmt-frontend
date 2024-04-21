@@ -33,7 +33,7 @@ export function BlackMarketContent({filters}) {
 
     const searchPredicate = item => search === "" || item['displayName'].toUpperCase().includes(search.toUpperCase())
     const tierPredicate = item => tier['value'] === "all" || item['tier'] === tier['value']
-    const enchantPredicate = item => enchant['value'] === "all" || item['enchant'] === enchant['value']
+    const enchantPredicate = item => enchant['value'] === "all" || item['enchant'] === enchant['value'] || (enchant['value'] === "not 4" && item['enchant'] !== 4)
     const qualityPredicate = item => quality['value'] === "all" || item['quality'] === quality['value']
     function predicate(item) {
         return searchPredicate(item) && tierPredicate(item) && enchantPredicate(item) && qualityPredicate(item)
@@ -41,14 +41,6 @@ export function BlackMarketContent({filters}) {
 
     return (
         <div className="w-screen h-full">
-            <div className="w-full h-10 px-10 py-2 sticky top-0 z-50 border-b-2 flex flex-row justify-between [&>*]:flex-1 text-center">
-                <div>Item</div>
-                <div>Amount</div>
-                <div>Price</div>
-                <div>Transmutation Cost</div>
-                <div>Last seen</div>
-                <div>Delete</div>
-            </div>
             {items.filter(predicate).sort((x, y) => y['unitPrice'] - x['unitPrice']).map(x => {
                 const {name, orderId, amount, unitPrice, tier, enchant, quality, lastUpdate} = x
                 return <BMItemRow systemName={name}
