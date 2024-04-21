@@ -39,7 +39,7 @@ export function BlackMarketContent({filters}) {
 
     return (
         <div className="w-screen h-full">
-            {items && itemInfo.length !== 0 && items.filter(predicate).sort((x, y) => y['unitPrice'] - x['unitPrice']).map(x => {
+            {items.length !== 0 && itemInfo.length !== 0 && items.filter(predicate).slice(0, 500).sort((x, y) => y['unitPrice'] - x['unitPrice']).map(x => {
                 const {name, orderId, amount, unitPrice, tier, enchant, quality, lastUpdate} = x
                 return <BMItemRow systemName={name}
                                   amount={amount}

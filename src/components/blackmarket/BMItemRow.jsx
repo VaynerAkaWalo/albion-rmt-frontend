@@ -56,6 +56,7 @@ export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant
     }
 
     function getTransmutationCost() {
+        console.log(getResourceAmount(resourceOne))
         if (tier < 4) {
             return "Unavailable"
         }

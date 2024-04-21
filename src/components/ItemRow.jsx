@@ -55,7 +55,6 @@ function ItemRow({item, itemDetails, marketData}) {
 
     function getBMPrice(tier, enchant) {
         const offer = offers.find(offer => offer['tier'] === tier && offer['enchant'] === enchant)
-        console.log(offer)
         if (offer === undefined) {
             return 0;
         }
