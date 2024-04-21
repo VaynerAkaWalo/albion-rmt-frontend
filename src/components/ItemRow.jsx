@@ -5,6 +5,7 @@ function ItemRow({item, itemDetails, marketData}) {
     const {name, displayName} = item
     const itemDetail = itemDetails.filter(itemDetail => itemDetail['name'] === name)[0]
     const offers = marketData.filter(offer => offer['name'] === name)
+        .filter(offer => offer['quality'] !== 5 && offer['quality'] !== 4)
     const {resourceOne, resourceTwo} = itemDetail
 
     const getResourceAmount = (resource) => {
