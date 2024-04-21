@@ -1,4 +1,3 @@
-import {FilterHeader} from "../headers/FilterHeader.jsx";
 import {BlackMarketContent} from "../blackmarket/BlackMarketContent.jsx";
 import {useState} from "react";
 import {BlackMarketFilterHeader} from "../blackmarket/BlackMarketFilterHeader.jsx";
