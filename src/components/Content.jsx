@@ -1,16 +1,47 @@
 import ItemRow from "./ItemRow.jsx";
 import SubHeader from "./SubHeader.jsx";
+import {useEffect, useState} from "react";
 
 function Content() {
-    const number = 20;
+    const [itemData, setItemData] = useState([])
+    const [itemDetails, setItemDetails] = useState([])
+    const {categories} = itemData
+
+    const getCategories = () => {
+        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/categories")
+            .then(data => data.json())
+            .then(json => {
+                setItemData(json)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const getItemData = () => {
+        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/item")
+            .then(data => data.json())
+            .then(json => setItemDetails(json))
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getCategories()
+        getItemData()
+    }, []);
+
+    const extractItems = categories && itemDetails.length !== 0 &&
+        categories
+            .flatMap(category => category['subcategories'])
+            .filter(subcategory => subcategory['name'] !== 'SPECIAL_CAPE')
+            .flatMap(subcategory => subcategory['items'])
 
     return (
         <div className="w-screen overflow-x-scroll">
-            <SubHeader num={number}></SubHeader>
+            <SubHeader></SubHeader>
             <div className="Content flex-grow w-fit">
                 <ul>
-                    {data.map(x =>
-                        <ItemRow key={x.name} name={x.name} num={number}></ItemRow>)}
+                    {extractItems && extractItems.map(item =>
+                        <ItemRow item={item} itemDetails={itemDetails}></ItemRow>)
+                    }
                 </ul>
             </div>
         </div>
