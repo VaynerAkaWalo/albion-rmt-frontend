@@ -1,12 +1,9 @@
 
 function SubHeader() {
     const items = [];
-    let tier = 4;
-    for (let i = 0; i < 20; i++) {
-        let mod = i % 4;
-        items.push(<div>{tier + "." + mod}</div>)
-        if (mod === 3) {
-            tier++;
+    for (let i = 4; i < 9; i++) {
+        for (let j = 0; j < 5; j++) {
+            items.push(<div>{i + "." + j}</div>)
         }
     }
 

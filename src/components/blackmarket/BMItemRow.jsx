@@ -56,7 +56,7 @@ export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant
     }
 
     function getTransmutationCost() {
-        if (enchant === 4 || tier < 4) {
+        if (tier < 4) {
             return "Unavailable"
         }
         return intFormatter(transmutationCost[tier - 4][enchant] * (getResourceAmount(resourceOne) + getResourceAmount(resourceTwo)))

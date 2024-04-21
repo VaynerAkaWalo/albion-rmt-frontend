@@ -16,8 +16,8 @@ function ItemRow({item, itemDetails}) {
     const prices = () => {
         let array = []
         for (let i = 4; i < 9; i++) {
-            for (let j = 0; j < 4; j++) {
-                array.push(transmutationCost[i - 4][j] * (getResourceAmount(resourceOne) + getResourceAmount(resourceTwo)))
+            for (let j = 0; j < 5; j++) {
+                array.push(transmutationCost[i - 4][j] * (getResourceAmount(resourceOne) + getResourceAmount(resourceTwo)) / 2)
             }
         }
         return array;
