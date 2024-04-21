@@ -28,3 +28,7 @@ img {
     width: calc(100vh * .15);
 }
 
+.calc {
+    height: 90vh;
+}
+

@@ -15,7 +15,7 @@ import {TemporaryPanel} from "../calculator/TemporaryPanel.jsx";
 export function CalculatorView() {
     return (
         <CalculatorContext child={
-            <div className="grid grid-cols-3 w-screen h-full px-20 py-4">
+            <div className="grid grid-cols-3 w-screen calc px-20 py-4">
                 <div className="flex flex-col [&>*]:flex-1">
                     <ItemSelection/>
                     <div className="flex w-full flex-col border-2 [&>*]:flex-1">
