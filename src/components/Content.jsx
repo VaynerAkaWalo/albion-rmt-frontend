@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 function Content() {
     const [itemData, setItemData] = useState([])
     const [itemDetails, setItemDetails] = useState([])
+    const [marketData, setMarketData] = useState([])
     const {categories} = itemData
 
     const getCategories = () => {
@@ -24,6 +25,21 @@ function Content() {
     }
 
     useEffect(() => {
+        const getMarketData = () => {
+            fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/marketdata")
+                .then(data => data.json())
+                .then(json => {setMarketData(json.sort((x, y) => y['unitPrice'] - x['unitPrice']))})
+                .catch(err => console.log(err))
+        }
+        getItemData()
+        getMarketData()
+        const interval = setInterval(() => {
+            getMarketData()
+        },5*1000);
+        return () => clearInterval(interval)
+    }, []);
+
+    useEffect(() => {
         getCategories()
         getItemData()
     }, []);
@@ -39,8 +55,8 @@ function Content() {
             <SubHeader></SubHeader>
             <div className="Content flex-grow w-fit">
                 <ul>
-                    {extractItems && extractItems.map(item =>
-                        <ItemRow item={item} itemDetails={itemDetails}></ItemRow>)
+                    {extractItems && marketData && extractItems.map(item =>
+                        <ItemRow item={item} itemDetails={itemDetails} marketData={marketData}></ItemRow>)
                     }
                 </ul>
             </div>
