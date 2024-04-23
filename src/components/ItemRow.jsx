@@ -1,5 +1,6 @@
 import {transmutationCost} from "../utils/TransmutationUtil.js";
 import {intFormatter} from "./calculator/scripts/utils.js";
+import {ItemRecord} from "./ItemRecord.jsx";
 
 function ItemRow({item, itemDetails, marketData}) {
     const {name, displayName} = item
@@ -8,11 +9,15 @@ function ItemRow({item, itemDetails, marketData}) {
         .filter(offer => offer['quality'] !== 5 && offer['quality'] !== 4)
     const {resourceOne, resourceTwo} = itemDetail
 
-    const getResourceAmount = (resource) => {
-        if (resource === undefined) {
-            return 0
+    const getResourceAmount = () => {
+        const resourceAmount = (resource) => {
+            if (resource === undefined) {
+                return 0
+            }
+            return parseInt(resource['amount'])
         }
-        return resource['amount']
+
+        return resourceAmount(resourceOne) + resourceAmount(resourceTwo)
     }
 
     function tierIdentifier() {
@@ -66,9 +71,13 @@ function ItemRow({item, itemDetails, marketData}) {
     return (
         <div className="itemRow border-b-2 flex flex-row [&>*]:my-3">
         <img src={image()} alt="itemIcon"/>
-            {tierIdentifier().map(identifier => priceWindow(
-                transmutationPrice(identifier['tier'], identifier['enchant']),
-                getBMPrice(identifier['tier'], identifier['enchant'])))}
+            {tierIdentifier().map(({tier, enchant}) => <ItemRecord tier={tier}
+                                                                   enchant={enchant}
+                                                                   resourceAmount={getResourceAmount()}
+                                                                   bmOffers={offers}/>)}
+            {/*{tierIdentifier().map(identifier => priceWindow(*/}
+            {/*    transmutationPrice(identifier['tier'], identifier['enchant']),*/}
+            {/*    getBMPrice(identifier['tier'], identifier['enchant'])))}*/}
         </div>
     )
 
