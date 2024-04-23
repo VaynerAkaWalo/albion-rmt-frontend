@@ -17,7 +17,7 @@ export function CostPanel() {
 
     function calcFee() {
         if (!isInitialized) return;
-        const nutritionConsumption = itemValue * amountMultiplier * 0.1125
+        const nutritionConsumption = itemValue * amountMultiplier * 0.1125 / 2
         return nutritionConsumption * tax / 100
     }
 

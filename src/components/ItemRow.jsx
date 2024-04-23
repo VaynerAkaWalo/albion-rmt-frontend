@@ -1,5 +1,3 @@
-import {transmutationCost} from "../utils/TransmutationUtil.js";
-import {intFormatter} from "./calculator/scripts/utils.js";
 import {ItemRecord} from "./ItemRecord.jsx";
 
 function ItemRow({item, itemDetails, marketData}) {
@@ -30,54 +28,17 @@ function ItemRow({item, itemDetails, marketData}) {
         return array
     }
 
-    function transmutationPrice(tier, enchant) {
-        return transmutationCost[tier - 4][enchant] * (getResourceAmount(resourceOne) + getResourceAmount(resourceTwo)) / 2
-    }
-
     function image() {
         return `https://render.albiononline.com/v1/item/T${4}_${name.toUpperCase()}.png`
     }
 
-    function priceWindow(transmutationPrice, bmPrice) {
-        const diff = bmPrice - transmutationPrice
-        transmutationPrice = intFormatter(transmutationPrice)
-        let bgColor
-        if (bmPrice === 0) {
-            bmPrice = ""
-            bgColor = "bg-gray-500"
-        }
-        else {
-            bmPrice = intFormatter(bmPrice)
-            bgColor = diff >= 0 ? "bg-green-700" : "bg-red-700"
-        }
-
-        return (
-            <div className={`flex justify-center flex-col items-center rounded-2xl ${bgColor}`}>
-                <div className={bgColor}>{transmutationPrice}</div>
-                <div className={bgColor}>{bmPrice}</div>
-            </div>
-        )
-    }
-
-    function getBMPrice(tier, enchant) {
-        const offer = offers.find(offer => offer['tier'] === tier && offer['enchant'] === enchant)
-        if (offer === undefined) {
-            return 0;
-        }
-
-        return offer['unitPrice'] / 10000
-    }
-
     return (
         <div className="itemRow border-b-2 flex flex-row [&>*]:my-3">
-        <img src={image()} alt="itemIcon"/>
+        <img src={image()} alt={displayName}/>
             {tierIdentifier().map(({tier, enchant}) => <ItemRecord tier={tier}
                                                                    enchant={enchant}
                                                                    resourceAmount={getResourceAmount()}
                                                                    bmOffers={offers}/>)}
-            {/*{tierIdentifier().map(identifier => priceWindow(*/}
-            {/*    transmutationPrice(identifier['tier'], identifier['enchant']),*/}
-            {/*    getBMPrice(identifier['tier'], identifier['enchant'])))}*/}
         </div>
     )
 
