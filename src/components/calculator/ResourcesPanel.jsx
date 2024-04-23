@@ -13,9 +13,9 @@ export function ResourcesPanel() {
     const {tier, enchant} = selectedItem
 
     useEffect(() => {
-        if (!tier) return
-        setDetailedItemInfo(prev => ({...prev, resourceOnePrice: transmutationCost[tier - 4][enchant] / 2}))
-        setDetailedItemInfo(prev => ({...prev, resourceTwoPrice: transmutationCost[tier - 4][enchant] / 2}))
+        if (!tier && tier > 3) return
+        setDetailedItemInfo(prev => ({...prev, resourceOnePrice: transmutationCost[tier - TIER_OFFSET][enchant] / 2}))
+        setDetailedItemInfo(prev => ({...prev, resourceTwoPrice: transmutationCost[tier - TIER_OFFSET][enchant] / 2}))
     }, [selectedItem]);
 
     function image(resource) {
