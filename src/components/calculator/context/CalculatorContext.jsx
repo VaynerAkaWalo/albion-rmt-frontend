@@ -82,4 +82,6 @@ const settingsPh = {
     returnRateWF: 37.1,
     tax: 0,
     amountMultiplier: 1,
+    selectedLocation: "Thetford",
+    recommendedCity: "Lymhurst"
 }

@@ -63,6 +63,7 @@ export function ItemSelection() {
         setSelectedItem(prev => ({
             ...prev,
             ...itemInfo,
+            recommendedCity: itemData['categories'][category['value']]['subcategories'][subcategory['value']]['recommendedCity'],
             tier: tier['value'],
             enchant: enchant['value']
         }))
