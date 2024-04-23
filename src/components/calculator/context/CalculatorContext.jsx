@@ -74,11 +74,12 @@ const placeholder = {
     resourceTwoAmount: "8",
     resourceOnePrice: 1000,
     resourceTwoPrice: 1000,
+    artefactPrice: 100000
 }
 
 const settingsPh = {
-    returnRateWoF: 20,
-    returnRateWF: 30,
-    tax: 15,
+    returnRateWoF: 0,
+    returnRateWF: 37.1,
+    tax: 0,
     amountMultiplier: 1,
 }

@@ -4,11 +4,13 @@ import {calculateItemValue, calculateResourceReturn, intFormatter} from "./scrip
 
 export function CostPanel() {
     const {isInitialized, selectedItem, settings, detailedItemInfo} = useContext(GlobalContext)
-    const {resourceOneAmount, resourceTwoAmount, resourceOnePrice, resourceTwoPrice} = detailedItemInfo
+    const {resourceOneAmount, resourceTwoAmount, resourceOnePrice, resourceTwoPrice, artefactPrice} = detailedItemInfo
     const {tax, amountMultiplier} = settings
 
     const {resourceOneWoF, resourceOneWF, resourceTwoWoF, resourceTwoWF} = calculateResourceReturn(settings, detailedItemInfo)
     const itemValue = calculateItemValue(detailedItemInfo, selectedItem)
+
+    console.log(artefactPrice)
 
     function resourcePrice() {
         if (!isInitialized) return;
@@ -35,14 +37,18 @@ export function CostPanel() {
         return 0;
     }
 
+    function getArtefactPrice() {
+        return artefactPrice * 1
+    }
+
     function totalCostWoF() {
         if (!isInitialized) return;
-        return resourcePrice() + calcFee() - returnFromRrWoF() - returnFromJournals()
+        return resourcePrice() + calcFee() - returnFromRrWoF() - returnFromJournals() + getArtefactPrice()
     }
 
     function totalCostWF() {
         if (!isInitialized) return;
-        return resourcePrice() + calcFee() - returnFromRrWF() - returnFromJournals()
+        return resourcePrice() + calcFee() - returnFromRrWF() - returnFromJournals() + getArtefactPrice()
     }
 
     return (

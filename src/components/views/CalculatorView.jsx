@@ -11,6 +11,7 @@ import {ResourceReturnPanel} from "../calculator/ResourceReturnPanel.jsx";
 import {JournalsReturnPanel} from "../calculator/JournalsReturnPanel.jsx";
 import {CalculatorContext} from "../calculator/context/CalculatorContext.jsx";
 import {TemporaryPanel} from "../calculator/TemporaryPanel.jsx";
+import {ArtifactPanel} from "../calculator/ArtifactPanel.jsx";
 
 export function CalculatorView() {
     return (
@@ -32,7 +33,7 @@ export function CalculatorView() {
                 </div>
                 <div className="flex flex-col [&>*]:flex-1">
                     <TemporaryPanel/>
-                    <JournalsPanel/>
+                    <ArtifactPanel/>
                     <JournalsReturnPanel/>
                 </div>
             </div>
