@@ -74,7 +74,7 @@ const placeholder = {
     resourceTwoAmount: "8",
     resourceOnePrice: 1000,
     resourceTwoPrice: 1000,
-    artefactPrice: 100000
+    artefactPrice: 0
 }
 
 const settingsPh = {
@@ -82,6 +82,4 @@ const settingsPh = {
     returnRateWF: 37.1,
     tax: 0,
     amountMultiplier: 1,
-    selectedLocation: "Thetford",
-    recommendedCity: "Lymhurst"
 }

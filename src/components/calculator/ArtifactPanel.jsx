@@ -20,6 +20,9 @@ export function ArtifactPanel() {
 
             return trash
         }
+        if (!isArtifact()) {
+            setDetailedItemInfo(prev => ({...prev, artefactPrice: 0}))
+        }
 
         setImage(getArtifactName())
     }, [selectedItem]);

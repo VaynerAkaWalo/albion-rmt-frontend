@@ -21,6 +21,22 @@ export function calculateResourceReturn(settings, detailedItemInfo) {
     }
 }
 
+export function calculateResourceUse(settings, detailedItemInfo) {
+    const {amountMultiplier} = settings
+    const {resourceOneAmount, resourceTwoAmount} = detailedItemInfo;
+    const {resourceOneWoF, resourceOneWF, resourceTwoWoF, resourceTwoWF} = calculateResourceReturn(settings, detailedItemInfo)
+
+    const resourceAmount = (resource) => amountMultiplier * resource
+
+
+    return {
+        resourceOneUseWoF: resourceAmount(resourceOneAmount) - resourceOneWoF,
+        resourceOneUseWF: resourceAmount(resourceOneAmount) - resourceOneWF,
+        resourceTwoUseWoF: resourceAmount(resourceTwoAmount) - resourceTwoWoF,
+        resourceTwoUseWF: resourceAmount(resourceTwoAmount) - resourceTwoWF
+    }
+}
+
 export function calculateItemValue(detailedItemInfo, selectedItem) {
     const {resourceOneAmount, resourceTwoAmount} = detailedItemInfo
     const {tier, enchant} = selectedItem
