@@ -13,8 +13,8 @@ export function ResourceReturnPanel() {
             <div className="grid grid-cols-3 [&>*]:border text-center">
                 <>
                     <strong>Item</strong>
-                    <strong>With Focus</strong>
                     <strong>Without Focus</strong>
+                    <strong>With Focus</strong>
                 </>
             </div>
             <div className="w-full h-max text-center">
