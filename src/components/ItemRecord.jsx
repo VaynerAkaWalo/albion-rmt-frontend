@@ -22,7 +22,7 @@ export function ItemRecord({tier, enchant, resourceAmount, bmOffers}) {
     }
 
     function transmutationPrice() {
-        return transmutationCost[tier - TIER_OFFSET][enchant] * resourceAmount / 2
+        return transmutationCost[tier - TIER_OFFSET][enchant] * resourceAmount * (1.0 - 0.4326) * 0.7
     }
 
 
