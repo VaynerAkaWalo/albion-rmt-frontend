@@ -13,8 +13,8 @@ export function LocationSelector() {
         let wFocus = 37.1
         switch (e['value']) {
             case recommendedCity:
-                woFocus = 36.7
-                wFocus = 53.9
+                woFocus = 24.8
+                wFocus = 31.6
                 break
             case "PERSONAL_ISLAND":
                 break
