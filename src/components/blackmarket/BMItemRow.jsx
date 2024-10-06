@@ -70,7 +70,7 @@ export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant
                 <img className="h-30" src={image()} alt="xd"/>
             </div>
             <div>{intFormatter(amount)}</div>
-            <div>{intFormatter(unitPrice / 10000)}</div>
+            <div>{intFormatter(unitPrice)}</div>
             <div>{getTransmutationCost()}</div>
             <div className={resolveColor()}>{prettyTime()}</div>
             <button className="font-bold border-2 py-3 rounded bg-red-700 border-red-700 text-white" onClick={deleteItem}>Delete Order</button>

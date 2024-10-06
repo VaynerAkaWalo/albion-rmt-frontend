@@ -18,7 +18,7 @@ export function ItemRecord({tier, enchant, resourceAmount, bmOffers}) {
             return setBmPrice(0)
         }
 
-        setBmPrice(offer['unitPrice'] / 10000)
+        setBmPrice(offer['unitPrice'])
     }
 
     function transmutationPrice() {
