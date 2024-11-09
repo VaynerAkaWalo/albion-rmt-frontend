@@ -13,7 +13,7 @@ export function CalculatorContext({child}) {
     const [settings, setSettings] = useState(settingsPh)
 
     useEffect(() => {
-        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/categories")
+        fetch("https://blamedevs.com/albion-rmt-backend/api/v1/categories")
             .then(data => data.json())
             .then(json => {
                 setItemData(json)
@@ -23,7 +23,7 @@ export function CalculatorContext({child}) {
 
     useEffect(() => {
         if (selectedItem['name']){
-            fetch(`https://blamedevs.com:8443/albion-rmt-backend/api/v1/item/${selectedItem['name']}`)
+            fetch(`https://blamedevs.com/albion-rmt-backend/api/v1/item/${selectedItem['name']}`)
                 .then(data => {
                     if (data.status === 500) {
                         throw new Error("could not load item data")

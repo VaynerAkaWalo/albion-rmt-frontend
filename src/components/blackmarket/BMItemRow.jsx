@@ -31,7 +31,7 @@ export function BMItemRow({systemName, amount, orderId, unitPrice, tier, enchant
     }
 
     function deleteItem(e) {
-        fetch(`https://blamedevs.com:8443/albion-rmt-backend/api/v1/marketdata/${orderId}`, {
+        fetch(`https://blamedevs.com/albion-rmt-backend/api/v1/marketdata/${orderId}`, {
             method: "DELETE"
         })
     }
