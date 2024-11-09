@@ -8,7 +8,7 @@ export function BlackMarketContent({filters}) {
     const {search, tier, enchant, quality} = filters
 
     const getItemData = () => {
-        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/item")
+        fetch("https://blamedevs.com/albion-rmt-backend/api/v1/item")
             .then(data => data.json())
             .then(json => setItemInfo(json))
             .catch(err => console.log(err))
@@ -16,7 +16,7 @@ export function BlackMarketContent({filters}) {
 
     useEffect(() => {
         const getMarketData = () => {
-            fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/marketdata")
+            fetch("https://blamedevs.com/albion-rmt-backend/api/v1/marketdata")
                 .then(data => data.json())
                 .then(json => {setItems(json)})
                 .catch(err => console.log(err))

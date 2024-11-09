@@ -9,7 +9,7 @@ export function Home() {
     const [textFilter, setTextFilter] = useState("")
 
     const getCategories = () => {
-        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/categories")
+        fetch("https://blamedevs.com/albion-rmt-backend/api/v1/categories")
             .then(data => data.json())
             .then(json => {
                 setCategoriesInfo(json)

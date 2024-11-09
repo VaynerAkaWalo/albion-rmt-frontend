@@ -8,7 +8,7 @@ function Content({categoriesInfo, selectedCategory, selectedSubcategory, textFil
     const {categories} = categoriesInfo
 
     const getItemData = () => {
-        fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/item")
+        fetch("https://blamedevs.com/albion-rmt-backend/api/v1/item")
             .then(data => data.json())
             .then(json => setItemDetails(json))
             .catch(err => console.log(err))
@@ -16,7 +16,7 @@ function Content({categoriesInfo, selectedCategory, selectedSubcategory, textFil
 
     useEffect(() => {
         const getMarketData = () => {
-            fetch("https://blamedevs.com:8443/albion-rmt-backend/api/v1/marketdata")
+            fetch("https://blamedevs.com/albion-rmt-backend/api/v1/marketdata")
                 .then(data => data.json())
                 .then(json => {setMarketData(json.sort((x, y) => y['unitPrice'] - x['unitPrice']))})
                 .catch(err => console.log(err))
